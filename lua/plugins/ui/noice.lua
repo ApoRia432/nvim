@@ -2,7 +2,15 @@ return {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {
-        -- add any options here
+        messages = {
+            enabled = false,
+        },
+        popmenu = {
+            enabled = false,
+        },
+        notify = {
+            enabled = true,
+        }
     },
     dependencies = {
         "MunifTanjim/nui.nvim",
