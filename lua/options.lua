@@ -18,3 +18,5 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 vim.opt.fillchars = { eob = " " }
+
+vim.opt.splitright = true
