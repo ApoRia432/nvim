@@ -15,5 +15,7 @@ return {
     "github/copilot.vim",
     config = function()
         vim.keymap.set("n", "<leader>cp", toggleCopilot, { desc = "Toggle Copilot" })
+        copilot_enable = false
+        vim.cmd('Copilot disable')
     end
 }
