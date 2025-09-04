@@ -19,7 +19,7 @@ return {
             },
         },
         sources = {
-            default = { "lsp", "path" },
+            default = { "lsp", "path", "snippets" },
             providers = {
                 lsp = { fallbacks = {} },
             },
