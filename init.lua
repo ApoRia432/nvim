@@ -1,3 +1,4 @@
+require("pack")
 vim.opt.mouse = ""
 vim.opt.guicursor = ""
 vim.opt.wrap = false
