@@ -11,7 +11,8 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 6
-vim.opt.winborder = "single"
+vim.opt.winborder = "rounded"
+vim.opt.pumborder = "rounded"
 vim.opt.hlsearch = false
 vim.opt.smartcase = true
 vim.opt.termguicolors = true
@@ -21,14 +22,14 @@ vim.diagnostic.config({
     }
 })
 -- auto completion
-vim.opt.pumheight = 9
-vim.opt.completeopt = { "fuzzy", "menuone", "noselect" }
+vim.opt.pumheight = 10
+vim.opt.completeopt = { "fuzzy", "menuone", "noinsert" }
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
         local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
         if client:supports_method('textDocument/completion') then
-            -- local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
-            -- client.server_capabilities.completionProvider.triggerCharacters = chars
+            local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
+            client.server_capabilities.completionProvider.triggerCharacters = chars
             vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true, })
         end
     end,
