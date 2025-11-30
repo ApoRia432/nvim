@@ -18,7 +18,7 @@ vim.opt.smartcase = true
 vim.opt.termguicolors = true
 vim.diagnostic.config({
     virtual_text = {
-        current_line = true
+        current_line = true,
     }
 })
 -- auto completion
@@ -42,8 +42,9 @@ vim.pack.add({
     { src = 'https://github.com/stevearc/oil.nvim' },
     { src = 'https://github.com/lewis6991/gitsigns.nvim' },
     { src = 'https://github.com/catppuccin/nvim' },
+    { src = 'https://github.com/projekt0n/github-nvim-theme' },
+    { src = 'https://github.com/lukas-reineke/indent-blankline.nvim' },
 });
-
 require('gitsigns').setup()
 require('mini.pick').setup()
 require('oil').setup({
@@ -54,8 +55,19 @@ require('oil').setup({
         winbar = "%#@attribute.builtin#%{substitute(v:lua.require('oil').get_current_dir(), '^' . $HOME, '~', '')}",
     },
 })
+require("ibl").setup({
+    indent = {
+        char = '│',
+    },
+    scope = { enabled = false },
+})
 require("catppuccin").setup({
     transparent_background = true,
+})
+require("github-theme").setup({
+    options = {
+        transparent = true,
+    },
 })
 -- treesitter
 require('nvim-treesitter').install('lua', 'go', 'vue', 'html', 'scss', 'css', 'typescript', 'javascript',
@@ -78,7 +90,7 @@ vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format);
 vim.keymap.set({ 'n', 'v', 'x' }, '<leader>y', '"+y<CR>')
 
 vim.keymap.set('n', '<leader>f', ':Pick files<CR>');
-vim.keymap.set('n', '<leader>s', ':Pick grep_live<CR>');
+vim.keymap.set('n', '<leader>s', ':Pick grep<CR>');
 vim.keymap.set('n', '<leader>b', ':Pick buffers<CR>');
 --lsp
 vim.lsp.enable('gopls')
@@ -88,4 +100,4 @@ vim.lsp.enable('bashls')
 vim.lsp.enable('yamlls')
 vim.lsp.enable('emmet_ls')
 -- colorscheme
-vim.cmd('colorscheme catppuccin-latte');
+vim.cmd('colorscheme github_dark_default');
