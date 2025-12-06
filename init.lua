@@ -23,7 +23,7 @@ vim.diagnostic.config({
 })
 -- auto completion
 vim.opt.pumheight = 10
-vim.opt.completeopt = { "fuzzy", "menuone", "noinsert" }
+vim.opt.completeopt = { "fuzzy", "menuone", "noselect" }
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
         local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
