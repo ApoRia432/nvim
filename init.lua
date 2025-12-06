@@ -42,7 +42,7 @@ vim.pack.add({
     { src = 'https://github.com/stevearc/oil.nvim' },
     { src = 'https://github.com/lewis6991/gitsigns.nvim' },
     { src = 'https://github.com/catppuccin/nvim' },
-    { src = 'https://github.com/projekt0n/github-nvim-theme' },
+    { src = 'https://github.com/folke/tokyonight.nvim' },
     { src = 'https://github.com/lukas-reineke/indent-blankline.nvim' },
 });
 require('gitsigns').setup()
@@ -61,13 +61,8 @@ require("ibl").setup({
     },
     scope = { enabled = false },
 })
-require("catppuccin").setup({
-    transparent_background = true,
-})
-require("github-theme").setup({
-    options = {
-        transparent = true,
-    },
+require("tokyonight").setup({
+    transparent = true,
 })
 -- treesitter
 require('nvim-treesitter').install('lua', 'go', 'vue', 'html', 'scss', 'css', 'typescript', 'javascript',
@@ -100,4 +95,4 @@ vim.lsp.enable('bashls')
 vim.lsp.enable('yamlls')
 vim.lsp.enable('emmet_ls')
 -- colorscheme
-vim.cmd('colorscheme github_dark_default');
+vim.cmd('colorscheme tokyonight-night');
