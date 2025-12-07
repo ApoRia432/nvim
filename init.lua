@@ -38,14 +38,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.pack.add({
     { src = 'https://github.com/neovim/nvim-lspconfig' },
     { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
-    { src = 'https://github.com/nvim-mini/mini.pick' },
+    { src = 'https://github.com/folke/snacks.nvim' },
     { src = 'https://github.com/stevearc/oil.nvim' },
     { src = 'https://github.com/lewis6991/gitsigns.nvim' },
     { src = 'https://github.com/lukas-reineke/indent-blankline.nvim' },
     { src = 'https://github.com/catppuccin/nvim' },
 });
+
 require('gitsigns').setup()
-require('mini.pick').setup()
+require('snacks').setup({})
 require('oil').setup({
     view_options = {
         show_hidden = true,
@@ -77,15 +78,16 @@ vim.keymap.set('n', '<leader>e', vim.cmd.Oil);
 vim.keymap.set('n', '<leader>w', vim.cmd.write);
 vim.keymap.set('n', '<leader>q', vim.cmd.quit);
 vim.keymap.set('n', '<leader>x', vim.cmd.bd);
+vim.keymap.set('n', '<leader>d', Snacks.picker.diagnostics);
 vim.keymap.set('n', '<leader>t', vim.cmd.term);
 
 vim.keymap.set('n', 'grd', vim.lsp.buf.definition);
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format);
 vim.keymap.set({ 'n', 'v', 'x' }, '<leader>y', '"+y<CR>')
 
-vim.keymap.set('n', '<leader>f', ':Pick files<CR>');
-vim.keymap.set('n', '<leader>s', ':Pick grep<CR>');
-vim.keymap.set('n', '<leader>b', ':Pick buffers<CR>');
+vim.keymap.set('n', '<leader>f', Snacks.picker.files);
+vim.keymap.set('n', '<leader>s', Snacks.picker.grep);
+vim.keymap.set('n', '<leader>b', Snacks.picker.buffers);
 --lsp
 vim.lsp.enable('gopls')
 vim.lsp.enable('ts_ls')
