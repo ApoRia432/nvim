@@ -37,16 +37,26 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 vim.pack.add({
     { src = 'https://github.com/neovim/nvim-lspconfig' },
-    { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
+    { src = 'https://github.com/nvim-treesitter/nvim-treesitter',    version = 'main' },
     { src = 'https://github.com/folke/snacks.nvim' },
     { src = 'https://github.com/stevearc/oil.nvim' },
     { src = 'https://github.com/lewis6991/gitsigns.nvim' },
     { src = 'https://github.com/lukas-reineke/indent-blankline.nvim' },
-    { src = 'https://github.com/catppuccin/nvim' },
+    { src = 'https://github.com/nvim-mini/mini.pick' },
+    { src = 'https://github.com/nvim-mini/mini.hues' },
+    -- { src = 'https://github.com/catppuccin/nvim' },
 });
 
+require('mini.hues').setup({
+    background = '#222222',
+    foreground = '#eeeeee',
+    accent = 'cyan',
+    -- saturation = 'high',
+    -- n_hues = 8
+})
+require('snacks').setup()
 require('gitsigns').setup()
-require('snacks').setup({})
+require('mini.pick').setup()
 require('oil').setup({
     view_options = {
         show_hidden = true,
@@ -60,9 +70,6 @@ require("ibl").setup({
         char = '│',
     },
     scope = { enabled = false },
-})
-require("catppuccin").setup({
-    transparent_background = true,
 })
 -- treesitter
 require('nvim-treesitter').install('lua', 'go', 'vue', 'html', 'scss', 'css', 'typescript', 'javascript',
@@ -85,9 +92,9 @@ vim.keymap.set('n', 'grd', vim.lsp.buf.definition);
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format);
 vim.keymap.set({ 'n', 'v', 'x' }, '<leader>y', '"+y<CR>')
 
-vim.keymap.set('n', '<leader>f', Snacks.picker.files);
-vim.keymap.set('n', '<leader>s', Snacks.picker.grep);
-vim.keymap.set('n', '<leader>b', Snacks.picker.buffers);
+vim.keymap.set('n', '<leader>f', ':Pick files<CR>');
+vim.keymap.set('n', '<leader>s', ':Pick grep<CR>');
+vim.keymap.set('n', '<leader>b', ':Pick buffers<CR>');
 --lsp
 vim.lsp.enable('gopls')
 vim.lsp.enable('ts_ls')
@@ -96,4 +103,4 @@ vim.lsp.enable('bashls')
 vim.lsp.enable('yamlls')
 vim.lsp.enable('emmet_ls')
 -- colorscheme
-vim.cmd('colorscheme catppuccin-frappe');
+vim.cmd('colorscheme miniwinter');
