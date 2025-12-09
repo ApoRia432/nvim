@@ -89,6 +89,7 @@ vim.keymap.set('n', '<leader>d', Snacks.picker.diagnostics);
 vim.keymap.set('n', '<leader>t', vim.cmd.term);
 
 vim.keymap.set('n', 'grd', vim.lsp.buf.definition);
+vim.keymap.set('n', 'gre', vim.diagnostic.open_float);
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format);
 vim.keymap.set({ 'n', 'v', 'x' }, '<leader>y', '"+y<CR>')
 
